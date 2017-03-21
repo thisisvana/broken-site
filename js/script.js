@@ -1,15 +1,20 @@
 function changeCol(col){
-document.getElementsByTagName("body").style.background = col;
+document.getElementsByTagName("body")[0].style.background = col;
 }
 
-var incr = 0;var imageArray = array(cat, dog, mouse);
+var incr = 0;
+var imageArray = ['cat', 'dog', 'mouse'];
 
-function imageSlideShow() {
-var timer = setInterval(function() {
-incr += 1;
-if(incr <= imageArray.length){
-incr = 0;
+function changePhoto() {
+	console.log(incr);
+	incr++;
+	if(incr > imageArray.length - 1){
+		incr = 0;
+	}
+	document.getElementById("slider").src = "img/" + imageArray[incr] + ".png";
 }
-document.getElementById("slider").src = imageArray[incr] + ".png";
-} 1000);
-}imageSlideShow();
+
+(function() {
+	var timer = setInterval(changePhoto, 1000);
+})();
+
